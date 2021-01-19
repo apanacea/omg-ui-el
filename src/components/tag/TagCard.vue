@@ -1,0 +1,31 @@
+<template>
+  <el-card style="margin-bottom: 24px;" :body-style="{ padding: '0px' }" shadow="hover">
+    <div style="padding: 8px;">
+      <h3 class="series-card-title"> {{ tag.name }} </h3>
+      <span class="series-card-body"><i class="el-icon-video-camera"/> {{ tag.filmCount }} </span>
+    </div>
+  </el-card>
+</template>
+
+<script>
+export default {
+  name: 'TagCard',
+  components: {},
+  props: {
+    tag: {}
+  },
+  data() {
+    return {};
+  },
+};
+</script>
+
+<style>
+.series-card-title {
+  padding: 0;
+  margin: 0 0 8px 0;
+}
+.series-card-body {
+  font-size: 16px;
+}
+</style>
