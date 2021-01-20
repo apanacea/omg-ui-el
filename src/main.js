@@ -22,7 +22,6 @@ import {
   Divider,
   Tag,
   Button,
-  Tooltip,
   Input
 
 } from 'element-ui'
@@ -42,7 +41,6 @@ Vue.use(Avatar)
 Vue.use(Divider)
 Vue.use(Tag)
 Vue.use(Button)
-Vue.use(Tooltip)
 Vue.use(Input)
 
 
