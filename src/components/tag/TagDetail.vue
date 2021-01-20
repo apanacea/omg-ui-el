@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-container style="padding: 50px 0">
-      <span style="margin: auto 0; font-size: 28px"> {{ series.name }} </span>
+      <span style="margin: auto 0; font-size: 28px"> {{ tag.name }} </span>
     </el-container>
     <el-row :gutter="32">
       <el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="6" v-for="film in films" v-bind:key="film.id">
@@ -27,7 +27,7 @@
 import FilmCard from "@/components/film/FilmCard";
 
 export default {
-  name: 'SeriesDetail',
+  name: 'TagDetail',
 
   props: {
     // performerId: Number
@@ -36,15 +36,15 @@ export default {
     FilmCard
   },
   created() {
-    let seriesId = this.$route.query.seriesId
-    this.$axios.get(this.$urls.selectSeries + seriesId)
+    let tagId = this.$route.query.tagId
+    this.$axios.get(this.$urls.selectTag + tagId)
         .then((resp) => {
           this.series = resp.data
         })
         .catch((error) => {
           console.log(error)
         })
-    this.$axios.get(this.$urls.selectSeries + seriesId +'/films?pageNum=' + this.pageNum + '&pageSize=8')
+    this.$axios.get(this.$urls.selectTag + tagId +'/films?pageNum=' + this.pageNum + '&pageSize=8')
         .then((resp) => {
           this.totalElements=resp.data.totalElements
           this.films = resp.data.list
@@ -55,7 +55,7 @@ export default {
   },
   data() {
     return {
-      series: {},
+      tag: {},
       pageNum: 1,
       totalElements: 1,
       films: []
@@ -63,8 +63,7 @@ export default {
   },
   methods: {
     onPageChange(pageNum) {
-      console.log(pageNum)
-      this.$axios.get(this.$urls.selectSeries + this.series.id +'/films?pageNum=' + pageNum + '&pageSize=8')
+      this.$axios.get(this.$urls.selectTag + this.tag.id +'/films?pageNum=' + pageNum + '&pageSize=8')
           .then((resp) => {
             this.totalElements=resp.data.totalElements
             this.films = resp.data.list

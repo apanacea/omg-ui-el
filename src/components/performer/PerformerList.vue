@@ -5,7 +5,7 @@
       <el-input
           size="small"
           style="width: 200px; margin: auto 0 auto auto"
-          placeholder="请输入内容"
+          placeholder="根据名字查询"
           prefix-icon="el-icon-search"
           v-model="fuzzyName"
           @change="onSearch">
@@ -21,6 +21,7 @@
       <el-pagination
           background
           layout="prev, pager, next"
+          hide-on-single-page="true"
           :current-page="pageNum"
           :total="totalElements"
           page-size="24"
@@ -66,9 +67,6 @@ export default {
           .catch((error) => {
             console.log(error)
           })
-    },
-    jumpToPerformerDetail(performerId) {
-      this.$router.push({path:'/performer', query: {performerId: performerId}})
     },
     onSearch(value) {
       this.$axios.get(this.$urls.selectPerformers + '?pageNum=1&pageSize=32&name=' + value)

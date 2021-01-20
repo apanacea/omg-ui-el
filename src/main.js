@@ -2,7 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import urls from './apis/urls'
 import axios from 'axios'
-import router from './router.js'
+import router from '@/router'
+import store from "@/store";
 
 import {
   Container,
@@ -52,6 +53,7 @@ Vue.config.productionTip = false
 new Vue({
   urls,
   axios,
+  store,
   router,
   render: h => h(App),
 }).$mount('#app')

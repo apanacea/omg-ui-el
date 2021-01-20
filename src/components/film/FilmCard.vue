@@ -7,7 +7,13 @@
         :src="film.coverUrl"
         fit="fit">
       <div slot="placeholder" class="image-slot">
-        加载中<span class="dot">...</span>
+        <div style="width: 800px; height: 538px; background-color: white">
+<!--          <span style="margin: auto">加载中...</span>-->
+          <el-image
+              style="width: 100%; border-radius: 5px"
+              src="https://justneo-omg.oss-cn-beijing.aliyuncs.com/film-cover/background.jpeg"
+              fit="fit"/>
+        </div>
       </div>
     </el-image>
     <div style="padding: 8px 0;">

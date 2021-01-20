@@ -1,6 +1,6 @@
 <template>
   <el-tooltip :content="series.name" placement="top" open-delay="1000">
-    <el-card style="margin-bottom: 24px;" :body-style="{ padding: '0px' }" shadow="hover">
+    <el-card style="margin-bottom: 24px;" :body-style="{ padding: '0px' }" shadow="hover" @click.native="jumpToSeriesDetail">
       <div style="padding: 8px;">
         <p class="series-card-title"> {{ series.name }} </p>
         <span class="series-card-body"><i class="el-icon-video-camera"/> {{ series.filmCount }} </span>
@@ -19,6 +19,11 @@ export default {
   data() {
     return {};
   },
+  methods: {
+    jumpToSeriesDetail() {
+      this.$router.push({path:'/series', query: {seriesId: this.series.id}})
+    },
+  }
 };
 </script>
 

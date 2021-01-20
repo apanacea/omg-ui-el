@@ -1,5 +1,5 @@
 <template>
-  <el-card style="margin-bottom: 24px; border-style: none" :body-style="{ padding: '0px' }" shadow="never">
+  <el-card style="margin-bottom: 24px; border-style: none" :body-style="{ padding: '0px' }" shadow="never" @click.native="jumpToPerformerDetail">
     <el-image
         style="width: 100%; border-radius: 5px"
         src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
@@ -21,5 +21,10 @@ export default {
   data() {
     return {};
   },
+  methods: {
+    jumpToPerformerDetail() {
+      this.$router.push({path:'/performer', query: {performerId: this.performer.id}})
+    },
+  }
 };
 </script>

@@ -21,6 +21,7 @@
       <el-pagination
           background
           layout="prev, pager, next"
+          hide-on-single-page="true"
           :current-page="pageNum"
           :total="totalElements"
           page-size="24"

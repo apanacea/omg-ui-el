@@ -1,15 +1,18 @@
 <template>
   <el-container>
-    <el-header style="padding: 0 100px">
+    <el-header style="padding: 0 100px; margin-bottom: 50px">
+      <el-container>
+        <span style="font-style: italic; font-weight: bold; font-size: 30px; margin: 20px auto 10px auto; color: #666666">OOOOOOH MY GIRL</span>
+      </el-container>
       <el-container>
         <el-menu
             :default-active="selectedIndex"
-            style="border-style: none; margin: auto;"
+            style="border-style: none; margin: auto"
             class="el-menu-demo"
             mode="horizontal"
             @select="handleSelect">
           <el-menu-item index="/films">
-            <span :style="selectedIndex === '/films' ? 'font-size: large' : ''">电影</span>
+            <span :style="selectedIndex === '/films' ? 'font-size: large' : ''">影片</span>
           </el-menu-item>
           <el-menu-item index="/series">
             <span :style="selectedIndex === '/series' ? 'font-size: large' : ''">系列</span>
@@ -71,5 +74,9 @@ export default {
   margin: 0;
   padding: 50px 0;
   color: black;
+}
+
+.omg-menu-item {
+  font-size: x-large;
 }
 </style>
