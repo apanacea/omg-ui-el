@@ -16,8 +16,6 @@
           {{ film.manufacturer.name }}
           <el-divider direction="vertical"/>
           {{ film.releaseDateStr }}
-          <el-divider direction="vertical"/>
-          {{ film.timeLengh }}
         </p>
         <p style="padding: 24px  4px; margin: 0; font-size: 14px; color: #666666">
           {{ film.description }}

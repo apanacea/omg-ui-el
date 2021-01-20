@@ -20,7 +20,7 @@ export default {
     selectFilms: baseUrl + '/films',
 
     // 查询演员列表
-    selectTag: baseUrl + '/tag',
+    selectTag: baseUrl + '/tag/',
     selectTags: baseUrl + '/tags',
     // 添加演员
     createTag: baseUrl + '/tag',
