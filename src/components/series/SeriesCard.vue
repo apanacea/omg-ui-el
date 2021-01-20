@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     jumpToSeriesDetail() {
-      this.$router.push({path:'/series', query: {seriesId: this.series.id}})
+      this.$router.push({path:'/seriesDetail', query: {seriesId: this.series.id}})
     },
   }
 };

@@ -15,7 +15,7 @@
           hide-on-single-page="true"
           :current-page="pageNum"
           :total="totalElements"
-          page-size="16"
+          page-size="12"
           @current-change="onPageChange"
           style="margin: 0 auto; padding: 24px 0"/>
     </el-container>
@@ -44,7 +44,7 @@ export default {
         .catch((error) => {
           console.log(error)
         })
-    this.$axios.get(this.$urls.selectSeries + seriesId +'/films?pageNum=' + this.pageNum + '&pageSize=8')
+    this.$axios.get(this.$urls.selectSeries + seriesId +'/films?pageNum=' + this.pageNum + '&pageSize=12')
         .then((resp) => {
           this.totalElements=resp.data.totalElements
           this.films = resp.data.list
@@ -64,7 +64,7 @@ export default {
   methods: {
     onPageChange(pageNum) {
       console.log(pageNum)
-      this.$axios.get(this.$urls.selectSeries + this.series.id +'/films?pageNum=' + pageNum + '&pageSize=8')
+      this.$axios.get(this.$urls.selectSeries + this.series.id +'/films?pageNum=' + pageNum + '&pageSize=12')
           .then((resp) => {
             this.totalElements=resp.data.totalElements
             this.films = resp.data.list
