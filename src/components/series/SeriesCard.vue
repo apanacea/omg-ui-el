@@ -1,7 +1,7 @@
 <template>
   <el-card style="margin-bottom: 24px;" :body-style="{ padding: '0px' }" shadow="hover" @click.native="jumpToSeriesDetail">
     <div style="padding: 8px;">
-      <p class="series-card-title"> {{ series.name }} </p>
+      <p class="series-card-title"> {{ showName }} </p>
       <span class="series-card-body"><i class="el-icon-video-camera"/> {{ series.filmCount }} </span>
     </div>
   </el-card>
@@ -12,7 +12,11 @@ export default {
   name: 'SeriesCard',
   components: {},
   props: {
-    series: {}
+    series: {
+      name: null,
+      nameZh: null,
+      filmCount: 0
+    }
   },
   data() {
     return {};
@@ -21,6 +25,11 @@ export default {
     jumpToSeriesDetail() {
       this.$router.push({path:'/seriesDetail', query: {seriesId: this.series.id}})
     },
+  },
+  computed: {
+    showName() {
+      return this.series.nameZh === null ? this.series.name : this.series.nameZh
+    }
   }
 };
 </script>

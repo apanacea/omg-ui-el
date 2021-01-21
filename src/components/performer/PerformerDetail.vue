@@ -1,7 +1,8 @@
 <template>
   <div>
     <el-container style="padding: 50px 0">
-      <span style="margin: auto 0; font-size: 28px"> {{ performer.name }} </span>
+      <span v-if="performer.nameZh !== null" style="margin: auto 0; font-size: 28px"> {{ performer.nameZh }} <el-divider direction="vertical"/> {{ performer.filmCount }} </span>
+      <span v-else style="margin: auto 0; font-size: 28px"> {{ performer.name }} <el-divider direction="vertical"/> {{ performer.filmCount }} </span>
     </el-container>
     <el-row :gutter="32">
       <el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="6" v-for="film in films" v-bind:key="film.id">
@@ -43,7 +44,7 @@ export default {
           console.log(error)
         })
     // 获取演员关联的电影列表
-    this.$axios.get(this.$urls.selectPerformer + performerId + '/films?pageNum=' + this.pageNum + '&pageSize=8')
+    this.$axios.get(this.$urls.selectPerformer + performerId + '/films?pageNum=' + this.pageNum + '&pageSize=12&sortBy=releaseDate&sortType=desc')
         .then((resp) => {
           console.log(resp.data);
           this.totalElements = resp.data.totalElements
@@ -63,7 +64,7 @@ export default {
   },
   methods: {
     onPageChange(pageNum) {
-      this.$axios.get(this.$urls.selectPerformer + this.performer.id + '/films?pageNum=' + pageNum)
+      this.$axios.get(this.$urls.selectPerformer + this.performer.id + '/films?pageNum=' + pageNum + '&pageSize=12&sortBy=releaseDate&sortType=desc')
           .then((resp) => {
             this.totalElements = resp.data.totalElements
             this.films = resp.data.list

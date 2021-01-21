@@ -9,8 +9,6 @@ import FilmDetail from "@/components/film/FilmDetail";
 import FilmList from './components/film/FilmList.vue';
 import PerformerList from './components/performer/PerformerList.vue';
 import PerformerDetail from "@/components/performer/PerformerDetail";
-import PerformerManagePage from './components/manage/performer/PerformerManagePage'
-import TagManagePage from "@/components/manage/tag/TagManagePage";
 
 import SeriesList from "@/components/series/SeriesList";
 import SeriesDetail from "@/components/series/SeriesDetail";
@@ -35,9 +33,6 @@ const routes=[
 
     {path:'/series',component:SeriesList},
     {path:'/seriesDetail',component:SeriesDetail},
-
-    {path:'/performerManage',component:PerformerManagePage},
-    {path:'/tagManage',component:TagManagePage},
 
 ]
 

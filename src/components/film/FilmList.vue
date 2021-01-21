@@ -23,7 +23,7 @@
           hide-on-single-page="true"
           :current-page="this.$store.state.filmsPageNum"
           :total="totalElements"
-          page-size="16"
+          page-size="12"
           @current-change="onPageChange"
           style="margin: 0 auto; padding: 24px 0"/>
     </el-container>
@@ -47,7 +47,7 @@ export default {
   },
   created() {
     let pageNum = this.$store.state.filmsPageNum
-    this.$axios.get(this.$urls.selectFilms + '?pageNum=' + pageNum + '&pageSize=16&sortBy=releaseDate&sortType=desc')
+    this.$axios.get(this.$urls.selectFilms + '?pageNum=' + pageNum + '&pageSize=12&sortBy=releaseDate&sortType=desc')
         .then((resp) => {
           this.totalElements = resp.data.totalElements
           this.films = resp.data.list
@@ -59,7 +59,7 @@ export default {
   methods: {
     onPageChange(pageNum) {
 
-      this.$axios.get(this.$urls.selectFilms + '?pageNum=' + pageNum + '&pageSize=16&sortBy=releaseDate&sortType=desc')
+      this.$axios.get(this.$urls.selectFilms + '?pageNum=' + pageNum + '&pageSize=12&sortBy=releaseDate&sortType=desc')
           .then((resp) => {
             this.$store.commit('setFilmsPageNum', pageNum)
             this.totalElements = resp.data.totalElements
@@ -70,7 +70,7 @@ export default {
           })
     },
     onSearch(value) {
-      this.$axios.get(this.$urls.selectFilms + '?pageNum=1&pageSize=32&serialNumber=' + value)
+      this.$axios.get(this.$urls.selectFilms + '?pageNum=1&pageSize=12&serialNumber=' + value)
           .then((resp) => {
             this.$store.commit('setFilmsPageNum', 1)
             this.films = resp.data.list
