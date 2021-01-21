@@ -7,7 +7,7 @@
           style="width: 200px; margin: auto 0 auto auto"
           placeholder="根据名字查询"
           prefix-icon="el-icon-search"
-          v-model="fuzzyName"
+          v-model="performerName"
           @change="onSearch">
       </el-input>
     </el-container>
@@ -24,7 +24,7 @@
           hide-on-single-page="true"
           :current-page="pageNum"
           :total="totalElements"
-          page-size="24"
+          :page-size="pageSize"
           @current-change="onPageChange"
           style="margin: 0 auto; padding: 24px 0"/>
     </el-container>
@@ -39,46 +39,45 @@ export default {
     PerformerCard
   },
   created() {
-    this.$axios.get(this.$urls.selectPerformers + '?pageNum=1&pageSize=24')
-        .then((resp) => {
-          this.performers = resp.data.list
-          this.totalElements = resp.data.totalElements
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+    this.init()
   },
   data() {
     return {
-      performers: [],
       pageNum: 1,
+      pageSize: 24,
       totalElements: 0,
-      fuzzyName: ""
+      performerName: "",
+      performers: []
     };
   },
   methods: {
-    onPageChange(pageNum) {
-      this.$axios.get(this.$urls.selectPerformers + '?pageNum=' + pageNum + '&pageSize=24&name=' + this.fuzzyName)
-          .then((resp) => {
-            console.log(resp.data);
-            this.performers = resp.data.list
-            this.totalElements = resp.data.totalElements
-          })
-          .catch((error) => {
-            console.log(error)
-          })
+    init() {
+      let pageNum = this.$route.query.pageNum
+      this.pageNum = (typeof pageNum) === 'undefined' ? 1 : pageNum
+      this.performerName = this.$route.query.performerName
+      this.getPerformerList()
     },
-    onSearch(value) {
-      this.$axios.get(this.$urls.selectPerformers + '?pageNum=1&pageSize=32&name=' + value)
-          .then((resp) => {
-            console.log(resp.data);
-            this.performers = resp.data.list
-            this.pageNum = 1
-            this.totalElements = resp.data.totalElements
+    onSearch() {
+      this.pageNum = 1
+      this.getPerformerList()
+    },
+    onPageChange(pageNum) {
+      this.$router.push({path: '/performers', query: {pageNum: pageNum, performerName: this.performerName}})
+    },
+    getPerformerList() {
+      this.$apis.getPerformerList(this.pageNum, this.pageSize, this.performerName)
+          .then(resp => {
+            this.totalElements = resp.totalElements
+            this.performers = resp.list
           })
-          .catch((error) => {
+          .catch(error => {
             console.log(error)
           })
+    }
+  },
+  watch: {
+    $route() {
+      this.init()
     }
   }
 };

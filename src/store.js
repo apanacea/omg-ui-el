@@ -9,22 +9,31 @@ const store = new Vuex.Store({
     state: {
         //存放的键值对就是所要管理的状态
         name: 'helloVueX',
-        tagsPageNum: 1,
-        filmsPageNum: 1,
-        seriesPageNum: 1,
-        performersPageNum: 1
+        tagListPageNum: 1,
+        filmListPageNum: 1,
+        seriesListPageNum: 1,
+        performerListPageNum: 1,
+        filmDetailPageNum: 1,
+        seriesDetailPageNum: 1,
+        performerDetailPageNum: 1
     },
     mutations: {
-        setTagsPageNum(state, tagsPageNum) {
-            state.tagsPageNum = tagsPageNum
+        setTagListPageNum(state, tagsListPageNum) {
+            state.tagListPageNum = tagsListPageNum
         },
-        setFilmsPageNum(state, filmsPageNum) {
-            state.filmsPageNum = filmsPageNum
-        },
-        setSeriesPageNum(state, seriesPageNum) {
+        setSeriesListPageNum(state, seriesPageNum) {
             state.seriesPageNum = seriesPageNum
         },
-        setPerformersPageNum(state, performersPageNum) {
+        setPerformerListPageNum(state, performersPageNum) {
+            state.performersPageNum = performersPageNum
+        },
+        setTagDetailPageNum(state, filmsPageNum) {
+            state.filmsPageNum = filmsPageNum
+        },
+        setSeriesDetailPageNum(state, seriesPageNum) {
+            state.seriesPageNum = seriesPageNum
+        },
+        setPerformerDetailPageNum(state, performersPageNum) {
             state.performersPageNum = performersPageNum
         }
     }

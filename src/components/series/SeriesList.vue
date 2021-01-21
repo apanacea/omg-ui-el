@@ -7,7 +7,7 @@
           style="width: 200px; margin: auto 0 auto auto"
           placeholder="请输入内容"
           prefix-icon="el-icon-search"
-          v-model="fuzzyName"
+          v-model="seriesName"
           @change="onSearch">
       </el-input>
     </el-container>
@@ -24,7 +24,7 @@
           hide-on-single-page="true"
           :current-page="pageNum"
           :total="totalElements"
-          page-size="24"
+          :page-size="pageSize"
           @current-change="onPageChange"
           style="margin: 0 auto; padding: 24px 0"/>
     </el-container>
@@ -38,47 +38,46 @@ export default {
   components: {
     SeriesCard
   },
-  created() {
-    this.$axios.get(this.$urls.fuzzySearchSeries + '?pageNum=1&pageSize=24')
-        .then((resp) => {
-          this.seriesList = resp.data.list
-          this.totalElements = resp.data.totalElements
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-  },
   data() {
     return {
-      seriesList: [],
       pageNum: 1,
+      pageSize: 24,
       totalElements: 0,
-      fuzzyName: ""
+      seriesName: "",
+      seriesList: []
     };
   },
+  created() {
+    this.init()
+  },
   methods: {
-    onPageChange(pageNum) {
-      this.$axios.get(this.$urls.fuzzySearchSeries + '?pageNum=' + pageNum + '&pageSize=24&name=' + this.fuzzyName)
-          .then((resp) => {
-            this.seriesList = resp.data.list
-            this.totalElements = resp.data.totalElements
-          })
-          .catch((error) => {
-            console.log(error)
-          })
+    init() {
+      let pageNum = this.$route.query.pageNum
+      this.pageNum = (typeof pageNum) === 'undefined' ? 1 : pageNum
+      this.seriesName = this.$route.query.seriesName
+      this.getSeriesList()
     },
     onSearch() {
-      this.$axios.get(this.$urls.fuzzySearchSeries + '?pageNum=1&pageSize=24&name=' + this.fuzzyName)
+      this.pageNum = 1
+      this.getSeriesList()
+    },
+    onPageChange(pageNum) {
+      this.$router.push({path: '/series', query: {pageNum: pageNum, seriesName: this.seriesName}})
+    },
+    getSeriesList() {
+      this.$apis.getSeriesList(this.pageNum, this.pageSize, this.seriesName)
           .then((resp) => {
-            this.seriesList = resp.data.list
-            this.totalElements = resp.data.totalElements
+            this.seriesList = resp.list
+            this.totalElements = resp.totalElements
           })
           .catch((error) => {
             console.log(error)
           })
-    },
-    jumpToSeriesDetail(seriesId) {
-      this.$router.push({path:'/seriesDetail', query: {seriesId: seriesId}})
+    }
+  },
+  watch: {
+    $route() {
+      this.init()
     }
   }
 };

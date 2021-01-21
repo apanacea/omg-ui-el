@@ -7,7 +7,7 @@
           style="width: 200px; margin: auto 0"
           placeholder="根据番号查询"
           prefix-icon="el-icon-search"
-          v-model="fuzzySerialNumber"
+          v-model="serialNumber"
           @change="onSearch">
       </el-input>
     </el-container>
@@ -21,7 +21,7 @@
           background
           layout="prev, pager, next"
           hide-on-single-page="true"
-          :current-page="this.$store.state.filmsPageNum"
+          :current-page="pageNum"
           :total="totalElements"
           page-size="12"
           @current-change="onPageChange"
@@ -41,40 +41,34 @@ export default {
   data() {
     return {
       films: [],
-      totalElements: 1,
-      fuzzySerialNumber: ''
+      pageNum: 1,
+      pageSize: 12,
+      totalElements: 0,
+      serialNumber: ''
     }
   },
   created() {
-    let pageNum = this.$store.state.filmsPageNum
-    this.$axios.get(this.$urls.selectFilms + '?pageNum=' + pageNum + '&pageSize=12&sortBy=releaseDate&sortType=desc')
-        .then((resp) => {
-          this.totalElements = resp.data.totalElements
-          this.films = resp.data.list
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+    this.init()
   },
   methods: {
-    onPageChange(pageNum) {
-
-      this.$axios.get(this.$urls.selectFilms + '?pageNum=' + pageNum + '&pageSize=12&sortBy=releaseDate&sortType=desc')
-          .then((resp) => {
-            this.$store.commit('setFilmsPageNum', pageNum)
-            this.totalElements = resp.data.totalElements
-            this.films = resp.data.list
-          })
-          .catch((error) => {
-            console.log(error)
-          })
+    init() {
+      let pageNum = this.$route.query.pageNum
+      this.pageNum = (typeof pageNum) === 'undefined' ? 1 : pageNum
+      this.serialNumber = this.$route.query.serialNumber
+      this.getFilmList()
     },
-    onSearch(value) {
-      this.$axios.get(this.$urls.selectFilms + '?pageNum=1&pageSize=12&serialNumber=' + value)
+    onSearch() {
+      this.pageNum = 1
+      this.getFilmList()
+    },
+    onPageChange(pageNum) {
+      this.$router.push({path: '/films', query: {pageNum: pageNum, serialNumber: this.serialNumber}})
+    },
+    getFilmList() {
+      this.$apis.getFilmList(this.pageNum, this.pageSize, this.serialNumber)
           .then((resp) => {
-            this.$store.commit('setFilmsPageNum', 1)
-            this.films = resp.data.list
-            this.totalElements = resp.data.totalElements
+            this.totalElements = resp.totalElements
+            this.films = resp.list
           })
           .catch((error) => {
             console.log(error)
@@ -84,6 +78,11 @@ export default {
   computed: {
     filmsPageNum() {
       return this.$store.state.filmsPageNum
+    }
+  },
+  watch: {
+    $route() {
+      this.init()
     }
   }
 };

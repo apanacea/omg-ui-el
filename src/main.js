@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import urls from './apis/urls'
+import apis from './apis/apis'
 import axios from 'axios'
 import router from '@/router'
 import store from "@/store";
@@ -45,10 +46,12 @@ Vue.use(Input)
 
 
 Vue.prototype.$urls = urls
+Vue.prototype.$apis = apis
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 
 new Vue({
+  apis,
   urls,
   axios,
   store,

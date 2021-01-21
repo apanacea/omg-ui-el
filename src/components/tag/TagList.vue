@@ -7,8 +7,8 @@
           style="width: 200px; margin: auto 0 auto auto"
           placeholder="请输入内容"
           prefix-icon="el-icon-search"
-          v-model="fuzzyName"
-          @change="onChange">
+          v-model="tagName"
+          @change="onSearch">
       </el-input>
     </el-container>
 
@@ -24,7 +24,7 @@
           hide-on-single-page="true"
           :current-page="pageNum"
           :total="totalElements"
-          page-size="24"
+          :page-size="pageSize"
           @current-change="onPageChange"
           style="margin: 0 auto; padding: 24px 0"/>
     </el-container>
@@ -38,47 +38,53 @@ export default {
   components: {
     TagCard
   },
-  created() {
-    this.$axios.get(this.$urls.selectTags + '?pageNum=1&pageSize=24')
-        .then((resp) => {
-          this.tags = resp.data.list
-          this.totalElements = resp.data.totalElements
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-  },
   data() {
     return {
       tags: [],
       pageNum: 1,
+      pageSize: 48,
       totalElements: 0,
-      fuzzyName: ""
+      tagName: ""
     };
   },
+  created() {
+    this.init()
+  },
   methods: {
+    init() {
+      let pageNum = this.$route.query.pageNum
+      this.pageNum = (typeof pageNum) === 'undefined' ? 1 : pageNum
+      this.tagName = this.$route.query.tagName
+      this.getTagList()
+    },
+    onSearch() {
+      this.pageNum = 1
+      this.getTagList()
+    },
     onPageChange(pageNum) {
-      this.$axios.get(this.$urls.selectTags + '?pageNum=' + pageNum + '&pageSize=24&name=' + this.fuzzyName)
+      this.pageNum = pageNum
+      this.getTagList()
+    },
+    onWatchRoute() {
+      let pageNum = this.$route.query.pageNum
+      if (typeof pageNum === 'undefined') {
+        this.$router.push({path: '/tags', query: {pageNum: '1'}})
+      }
+    },
+    getTagList() {
+      this.$apis.getTagList(this.pageNum, this.pageSize, this.tagName)
           .then((resp) => {
-            this.tags = resp.data.list
-            this.totalElements = resp.data.totalElements
+            this.tags = resp.list
+            this.totalElements = resp.totalElements
           })
           .catch((error) => {
             console.log(error)
           })
-    },
-    onChange() {
-      this.$axios.get(this.$urls.selectTags + '?pageNum=1&pageSize=24&name=' + this.fuzzyName)
-          .then((resp) => {
-            this.tags = resp.data.list
-            this.totalElements = resp.data.totalElements
-          })
-          .catch((error) => {
-            console.log(error)
-          })
-    },
-    jumpToSeriesDetail(seriesId) {
-      this.$router.push({path:'/seriesDetail', query: {seriesId: seriesId}})
+    }
+  },
+  watch: {
+    $route() {
+      this.init()
     }
   }
 };

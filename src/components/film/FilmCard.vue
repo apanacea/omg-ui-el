@@ -36,7 +36,6 @@ export default {
   },
   methods: {
     jumpToFilmDetail() {
-      console.log('click')
       this.$router.push({path:'/film', query: {filmId: this.film.id}})
     }
   }

@@ -2,6 +2,17 @@
 const baseUrl = 'http://62.234.10.88/api'
 
 export default {
+
+    getFilmDetail: baseUrl + '/film/{}',
+    getFilmList: baseUrl + '/films',
+    getFilmListByPerformerId: baseUrl + '/performer/{}/films',
+    getFilmListBySeriesId: baseUrl + '/series/{}/films',
+    getFilmListByTagId: baseUrl + '/tag/{}/films',
+
+    getPerformerList: baseUrl + '/performers',
+    getSeriesList: baseUrl + '/seriesList',
+    getTagList: baseUrl + '/tags',
+
     // 图片列表
     photos: baseUrl + '/photos',
 
