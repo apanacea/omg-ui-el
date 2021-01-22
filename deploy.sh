@@ -1,3 +1,3 @@
-npm install;
-npm run build;
+cnpm install;
+cnpm run build;
 cp -r dist/ /var/www;
