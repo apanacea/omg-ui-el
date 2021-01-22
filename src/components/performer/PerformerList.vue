@@ -13,7 +13,7 @@
     </el-container>
 
     <el-row :gutter="32">
-      <el-col :xs="4" :sm="3" :md="3" :lg="3" :xl="3" v-for="performer in performers" v-bind:key="performer">
+      <el-col :xs="8" :sm="8" :md="6" :lg="3" :xl="3" v-for="performer in performers" v-bind:key="performer">
         <PerformerCard :performer="performer"/>
       </el-col>
     </el-row>
