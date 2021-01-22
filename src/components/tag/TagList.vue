@@ -4,7 +4,7 @@
       <span style="margin: auto 0; font-size: 28px">标签</span>
       <el-input
           size="small"
-          style="width: 200px; margin: auto 0 auto auto"
+          style="width: 150px; margin: auto 0 auto auto"
           placeholder="请输入内容"
           prefix-icon="el-icon-search"
           v-model="tagName"
