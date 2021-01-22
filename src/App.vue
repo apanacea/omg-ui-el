@@ -1,8 +1,8 @@
 <template>
-  <el-container>
-    <el-header style="padding: 0 100px; margin-bottom: 50px">
+  <el-container style="max-width: 1500px; margin: 0 auto">
+    <el-header style="padding: 0; margin-bottom: 50px">
       <el-container>
-        <span style="font-style: italic; font-weight: bold; font-size: 30px; margin: 20px auto 10px auto; color: #666666">OOOOOOH MY GIRL</span>
+        <span style="font-style: italic; font-weight: bold; font-size: 30px; margin: 20px auto 10px auto; color: #666666">OH MY GIRL</span>
       </el-container>
       <el-container>
         <el-menu
@@ -27,7 +27,7 @@
       </el-container>
 
     </el-header>
-    <el-main style="padding: 30px 100px">
+    <el-main style="padding: 30px">
       <router-view/>
     </el-main>
   </el-container>
