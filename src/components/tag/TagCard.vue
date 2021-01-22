@@ -1,8 +1,10 @@
 <template>
-  <el-card style="margin-bottom: 24px;" :body-style="{ padding: '0px' }" shadow="hover" @click.native="jumpToTagDetail">
+  <el-card style="margin-bottom: 24px; height: 70px" :body-style="{ padding: '0px' }" shadow="hover" @click.native="jumpToTagDetail">
     <div style="padding: 8px;">
-      <h3 class="series-card-title"> {{ showName }} </h3>
-      <span class="series-card-body"><i class="el-icon-video-camera"/> {{ tag.filmCount }} </span>
+      <p class="series-card-title"> {{ showName }} </p>
+      <div class="series-card-body" style="text-align: right; font-size: 24px; color: #F56C6C">
+        <span> {{ tag.filmCount }} </span>
+      </div>
     </div>
   </el-card>
 </template>
@@ -32,6 +34,10 @@ export default {
 
 <style>
 .series-card-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 16px;
   padding: 0;
   margin: 0 0 8px 0;
 }

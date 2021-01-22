@@ -18,7 +18,7 @@
     </el-row>
     <el-container>
       <el-pagination
-          small
+          background
           layout="prev, pager, next"
           hide-on-single-page="true"
           :current-page="pageNum"

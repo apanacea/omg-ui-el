@@ -16,7 +16,7 @@
           hide-on-single-page="true"
           :current-page="this.$store.state.filmsPageNum"
           :total="totalElements"
-          page-size="16"
+          page-size="12"
           @current-change="onPageChange"
           style="margin: 0 auto; padding: 24px 0"/>
     </el-container>
@@ -59,7 +59,7 @@ export default {
       pageNum: 1,
       totalElements: 1,
       performer: {},
-      films: [1,2,3,4,5]
+      films: []
     };
   },
   methods: {
