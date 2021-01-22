@@ -13,7 +13,7 @@
     </el-container>
 
     <el-row :gutter="24">
-      <el-col :xs="8" :sm="6" :md="6" :lg="8" :xl="4" v-for="series in seriesList" v-bind:key="series">
+      <el-col :xs="12" :sm="8" :md="8" :lg="8" :xl="4" v-for="series in seriesList" v-bind:key="series">
         <SeriesCard :series="series"/>
       </el-col>
     </el-row>

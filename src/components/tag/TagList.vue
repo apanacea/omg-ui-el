@@ -13,7 +13,7 @@
     </el-container>
 
     <el-row :gutter="24">
-      <el-col :xs="8" :sm="6" :md="6" :lg="4" :xl="4" v-for="tag in tags" v-bind:key="tag">
+      <el-col :xs="8" :sm="8" :md="6" :lg="4" :xl="4" v-for="tag in tags" v-bind:key="tag">
         <TagCard :tag="tag"/>
       </el-col>
     </el-row>
