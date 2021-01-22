@@ -2,13 +2,13 @@
   <div>
     <h1 class="page-title">影片详情</h1>
     <el-row :gutter="24">
-      <el-col :span="8">
+      <el-col :span="10">
         <el-image
             style="width: 100%; border-radius: 5px"
-            :src="film.coverUrl"
+            :src="coverUrlToShow"
             fit="fit"/>
       </el-col>
-      <el-col :span="16">
+      <el-col :span="14">
         <p class="film-detail-title"> {{ film.title }} </p>
         <p style="padding: 0 4px; margin: 0; font-size: 16px; color: #666666">
           {{ film.serialNumber }}
@@ -71,7 +71,12 @@ export default {
       film: {}
     };
   },
-  methods: {}
+  computed: {
+    coverUrlToShow() {
+      let w = window.innerWidth
+      return w < 992 ? this.film.halfCoverUrl : this.film.coverUrl
+    }
+  }
 };
 </script>
 <style>
