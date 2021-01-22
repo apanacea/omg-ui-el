@@ -4,7 +4,7 @@
       <span style="margin: auto auto auto 0; font-size: 28px">影片</span>
       <el-input
           size="small"
-          style="width: 120px; margin: auto 0"
+          style="width: 120px; margin: auto 0;"
           placeholder="查询番号"
           prefix-icon="el-icon-search"
           v-model="serialNumber"

@@ -1,2 +1,3 @@
+npm install;
 npm run build;
-cp -r dist/ /var/www
+cp -r dist/ /var/www;

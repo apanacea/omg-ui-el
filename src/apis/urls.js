@@ -1,5 +1,5 @@
-// const baseUrl = 'http://localhost:8080'
-const baseUrl = 'http://62.234.10.88/api'
+const baseUrl = 'http://localhost:8080'
+// const baseUrl = 'http://62.234.10.88/api'
 
 export default {
 

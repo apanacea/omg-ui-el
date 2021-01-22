@@ -1,8 +1,8 @@
 <template>
-  <el-container style="max-width: 1500px; margin: 0 auto">
+  <el-container style="max-width: 1500px; margin: 0 auto;">
     <el-header style="padding: 0; margin-bottom: 50px">
       <el-container>
-        <span style="font-style: italic; font-weight: bold; font-size: 30px; margin: 20px auto 10px auto; color: #666666">OH MY GIRL</span>
+        <span style="font-style: italic; font-weight: bold; font-size: 30px; margin: 20px auto 10px auto; color: #FE4365">OH MY GIRL</span>
       </el-container>
       <el-container>
         <el-menu
