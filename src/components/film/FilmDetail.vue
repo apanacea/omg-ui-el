@@ -26,7 +26,7 @@
     </el-row>
     <h1 class="page-title"> 演员列表 </h1>
     <el-row :gutter="24">
-      <el-col :xs="4" :sm="4" :md="4" :lg="2" :xl="2" v-for="performer in film.performers" v-bind:key="performer">
+      <el-col :xs="8" :sm="8" :md="6" :lg="3" :xl="3" v-for="performer in film.performers" v-bind:key="performer">
         <PerformerCard :performer="performer"/>
       </el-col>
     </el-row>
