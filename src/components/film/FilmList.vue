@@ -1,17 +1,13 @@
 <template>
   <div>
-    <el-container style="padding: 24px 0">
-      <span style="margin: auto auto auto 0; font-size: 28px">影片</span>
-      <el-input
-          size="small"
-          style="width: 120px; margin: auto 0;"
-          placeholder="查询番号"
-          prefix-icon="el-icon-search"
-          v-model="serialNumber"
-          @change="onSearch">
-      </el-input>
-    </el-container>
-    <FilmSelector></FilmSelector>
+    <PageTitle title="影片">
+      <div class="omg-search-box" slot="default">
+        <i class="el-icon-search" style="color: #666666; margin: 0 2px"></i>
+        <label>
+          <input class="omg-search-box-input" type="text" v-model="serialNumber" @change="onSearch">
+        </label>
+      </div>
+    </PageTitle>
     <el-row :gutter="24">
       <el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="6" v-for="film in films" v-bind:key="film.id">
         <FilmCard :film="film"/>
@@ -19,7 +15,6 @@
     </el-row>
     <el-container>
       <el-pagination
-          small
           background
           layout="prev, pager, next"
           hide-on-single-page="true"
@@ -27,19 +22,19 @@
           :total="totalElements"
           page-size="12"
           @current-change="onPageChange"
-          style="margin: 0 auto; padding: 24px 0"/>
+          style="margin: 0 auto; padding: 24px 0;"/>
     </el-container>
 
   </div>
 </template>
 <script>
 import FilmCard from "@/components/film/FilmCard";
-import FilmSelector from "@/components/film/FilmSelector";
+import PageTitle from "@/components/common/PageTitle";
 
 export default {
   name: 'FilmList',
   components: {
-    FilmSelector,
+    PageTitle,
     FilmCard
   },
   data() {

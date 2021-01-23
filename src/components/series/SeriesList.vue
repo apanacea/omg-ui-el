@@ -1,16 +1,13 @@
 <template>
   <div>
-    <el-container style="padding: 24px 0">
-      <span style="margin: auto 0; font-size: 28px">系列</span>
-      <el-input
-          size="small"
-          style="width: 200px; margin: auto 0 auto auto"
-          placeholder="请输入内容"
-          prefix-icon="el-icon-search"
-          v-model="seriesName"
-          @change="onSearch">
-      </el-input>
-    </el-container>
+    <PageTitle title="系列">
+      <div class="omg-search-box" slot="default">
+        <i class="el-icon-search" style="color: #666666; margin: 0 2px"></i>
+        <label>
+          <input class="omg-search-box-input" type="text" v-model="seriesName" @change="onSearch">
+        </label>
+      </div>
+    </PageTitle>
 
     <el-row :gutter="24">
       <el-col :xs="12" :sm="8" :md="8" :lg="8" :xl="4" v-for="series in seriesList" v-bind:key="series">
@@ -33,11 +30,13 @@
 </template>
 <script>
 import SeriesCard from "@/components/series/SeriesCard";
+import PageTitle from "@/components/common/PageTitle";
 
 export default {
   name: 'SeriesList',
   components: {
-    SeriesCard
+    SeriesCard,
+    PageTitle
   },
   data() {
     return {

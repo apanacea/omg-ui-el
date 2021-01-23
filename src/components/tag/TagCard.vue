@@ -1,5 +1,5 @@
 <template>
-  <el-card style="margin-bottom: 24px; height: 70px" :body-style="{ padding: '0px' }" shadow="hover" @click.native="jumpToTagDetail">
+  <el-card style="margin-bottom: 24px; height: 70px; background-color: #141414; border: none;" :body-style="{ padding: '0px' }" shadow="hover" @click.native="jumpToTagDetail">
     <div style="padding: 8px;">
       <p class="series-card-title"> {{ showName }} </p>
       <div class="series-card-body" style="text-align: right; font-size: 24px; color: #F56C6C">

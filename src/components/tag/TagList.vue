@@ -1,16 +1,13 @@
 <template>
   <div>
-    <el-container style="padding: 24px 0">
-      <span style="margin: auto 0; font-size: 28px">标签</span>
-      <el-input
-          size="small"
-          style="width: 150px; margin: auto 0 auto auto"
-          placeholder="请输入内容"
-          prefix-icon="el-icon-search"
-          v-model="tagName"
-          @change="onSearch">
-      </el-input>
-    </el-container>
+    <PageTitle title="标签">
+      <div class="omg-search-box" slot="default">
+        <i class="el-icon-search" style="color: #666666; margin: 0 2px"></i>
+        <label>
+          <input class="omg-search-box-input" type="text" v-model="tagName" @change="onSearch">
+        </label>
+      </div>
+    </PageTitle>
 
     <el-row :gutter="24">
       <el-col :xs="8" :sm="8" :md="6" :lg="4" :xl="4" v-for="tag in tags" v-bind:key="tag">
@@ -33,11 +30,13 @@
 </template>
 <script>
 import TagCard from "@/components/tag/TagCard";
+import PageTitle from "@/components/common/PageTitle";
 
 export default {
   name: 'TagList',
   components: {
-    TagCard
+    TagCard,
+    PageTitle
   },
   data() {
     return {

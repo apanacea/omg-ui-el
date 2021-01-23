@@ -1,5 +1,5 @@
 <template>
-  <el-card style="margin-bottom: 24px; height: 70px" :body-style="{ padding: '0px' }" shadow="hover" @click.native="jumpToSeriesDetail">
+  <el-card class="omg-card" :body-style="{ padding: '0px' }" shadow="hover" @click.native="jumpToSeriesDetail">
     <div style="padding: 8px;">
       <p class="series-card-title"> {{ showName }} </p>
       <div class="series-card-body" style="text-align: right; font-size: 24px; color: #F56C6C">
@@ -39,6 +39,8 @@ export default {
 
 <style>
 .series-card-title {
+  color: white;
+  opacity: 0.65;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

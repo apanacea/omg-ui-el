@@ -1,9 +1,6 @@
 <template>
   <div>
-    <el-container style="padding: 50px 0">
-      <span v-if="performer.nameZh !== null" style="margin: auto 0; font-size: 28px"> {{ performer.nameZh }} <el-divider direction="vertical"/> {{ performer.filmCount }} </span>
-      <span v-else style="margin: auto 0; font-size: 28px"> {{ performer.name }} <el-divider direction="vertical"/> {{ performer.filmCount }} </span>
-    </el-container>
+    <PageTitle :title="performer.name"></PageTitle>
     <el-row :gutter="32">
       <el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="6" v-for="film in films" v-bind:key="film.id">
         <FilmCard :film="film"/>
@@ -26,10 +23,12 @@
 <script>
 
 import FilmCard from "@/components/film/FilmCard";
+import PageTitle from "@/components/common/PageTitle";
 
 export default {
   name: 'PerformerDetail',
   components: {
+    PageTitle,
     FilmCard
   },
   created() {

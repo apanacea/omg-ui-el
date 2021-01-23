@@ -1,16 +1,13 @@
 <template>
   <div>
-    <el-container style="padding: 24px 0">
-      <span style="margin: auto 0; font-size: 28px">演员</span>
-      <el-input
-          size="small"
-          style="width: 200px; margin: auto 0 auto auto"
-          placeholder="根据名字查询"
-          prefix-icon="el-icon-search"
-          v-model="performerName"
-          @change="onSearch">
-      </el-input>
-    </el-container>
+    <PageTitle title="演员">
+      <div class="omg-search-box" slot="default">
+        <i class="el-icon-search" style="color: #666666; margin: 0 2px"></i>
+        <label>
+          <input class="omg-search-box-input" type="text" v-model="performerName" @change="onSearch">
+        </label>
+      </div>
+    </PageTitle>
 
     <el-row :gutter="32">
       <el-col :xs="8" :sm="8" :md="6" :lg="3" :xl="3" v-for="performer in performers" v-bind:key="performer">
@@ -33,11 +30,13 @@
 </template>
 <script>
 import PerformerCard from './PerformerCard.vue';
+import PageTitle from "@/components/common/PageTitle";
 
 export default {
   name: 'PerformerList',
   components: {
-    PerformerCard
+    PerformerCard,
+    PageTitle
   },
   created() {
     this.init()

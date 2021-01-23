@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="page-title">影片详情</h1>
+    <PageTitle :title="film.title"></PageTitle>
     <el-row :gutter="24">
       <el-col :span="10">
         <el-image
@@ -24,26 +24,27 @@
 <!--        <el-tag class="film-tag" type="info" size="small" v-for="tag in film.tags" v-bind:key="tag.id"> {{ tag.name }} </el-tag>-->
       </el-col>
     </el-row>
-    <h1 class="page-title"> 标签列表 </h1>
+    <PageTitle title="标签列表"></PageTitle>
+<!--    <h1 class="page-title"> 标签列表 </h1>-->
     <el-row :gutter="24">
       <el-col :xs="8" :sm="8" :md="6" :lg="3" :xl="3" v-for="tag in film.tags" v-bind:key="tag">
         <TagCard :tag="tag"/>
       </el-col>
     </el-row>
-    <h1 class="page-title"> 演员列表 </h1>
+    <PageTitle title="演员列表"></PageTitle>
     <el-row :gutter="24">
       <el-col :xs="8" :sm="8" :md="6" :lg="3" :xl="3" v-for="performer in film.performers" v-bind:key="performer">
         <PerformerCard :performer="performer"/>
       </el-col>
     </el-row>
-    <h1 class="page-title"> 磁力链接 </h1>
+    <PageTitle title="磁力链接"></PageTitle>
     <a :href="'http://clg0.biz/search?word=' + film.serialNumber" target="_blank">
       <el-button class="omg-magnet-link">磁力狗</el-button>
     </a>
     <a :href="'https://0cili.com/search?q=' + film.serialNumber" target="_blank">
       <el-button class="omg-magnet-link">无极磁链</el-button>
     </a>
-    <h1 class="page-title"> 电影图集 </h1>
+    <PageTitle title="影片图集"></PageTitle>
     <ScreenshotList :screenshots="film.screenshots"/>
 
   </div>
@@ -53,6 +54,7 @@
 import PerformerCard from "@/components/performer/PerformerCard";
 import ScreenshotList from "@/components/film/ScreenshotList";
 import TagCard from "@/components/tag/TagCard";
+import PageTitle from "@/components/common/PageTitle";
 
 
 export default {
@@ -61,6 +63,7 @@ export default {
     filmId: Number
   },
   components: {
+    PageTitle,
     TagCard,
     PerformerCard,
     ScreenshotList
@@ -82,10 +85,13 @@ export default {
 };
 </script>
 <style>
+
 .film-detail-title {
   font-size: 22px;
   margin: 0;
   padding: 0 0 10px 0;
+  color: white;
+  opacity: 0.85;
 }
 
 .omg-film-tag {

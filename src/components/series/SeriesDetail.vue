@@ -1,8 +1,9 @@
 <template>
   <div>
-    <el-container style="padding: 50px 0">
-      <span style="margin: auto 0; font-size: 28px"> {{ series.name }} </span>
-    </el-container>
+<!--    <el-container style="padding: 50px 0">-->
+<!--      <span style="margin: auto 0; font-size: 28px"> {{ series.name }} </span>-->
+<!--    </el-container>-->
+    <PageTitle :title="series.name"></PageTitle>
     <el-row :gutter="32">
       <el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="6" v-for="film in films" v-bind:key="film.id">
         <FilmCard :film="film"/>
@@ -25,6 +26,7 @@
 <script>
 
 import FilmCard from "@/components/film/FilmCard";
+import PageTitle from "@/components/common/PageTitle";
 
 export default {
   name: 'SeriesDetail',
@@ -33,6 +35,7 @@ export default {
     // performerId: Number
   },
   components: {
+    PageTitle,
     FilmCard
   },
   created() {
