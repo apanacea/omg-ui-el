@@ -1,29 +1,23 @@
 <template>
   <div>
     <PageTitle :title="film.title"></PageTitle>
-    <el-row :gutter="24">
-      <el-col :span="10">
-        <el-image
-            style="width: 100%; border-radius: 5px"
-            :src="film.coverUrl"
-            fit="fit"/>
-      </el-col>
-      <el-col :span="14">
-<!--        <p class="film-detail-title"> {{ film.title }} </p>-->
-        <p style="padding: 0 4px; margin: 0; font-size: 18px; color: #666666">
-          {{ film.serialNumber }}
-          <el-divider direction="vertical"/>
-          {{ film.manufacturer.name }}
-          <el-divider direction="vertical"/>
-          {{ film.releaseDateStr }}
-        </p>
-        <el-tag v-if="film.series !== null" class="omg-film-tag" size="medium"> {{film.series.name}} </el-tag>
-        <p style="padding: 24px  4px; margin: 0; font-size: 14px; color: #666666">
-          {{ film.description }}
-        </p>
-<!--        <el-tag class="film-tag" type="info" size="small" v-for="tag in film.tags" v-bind:key="tag.id"> {{ tag.name }} </el-tag>-->
-      </el-col>
-    </el-row>
+    <div style="display: flex; justify-content: center; padding: 24px 0">
+      <img :src="film.coverUrl" :alt="film.title" style="max-width: 800px; border-radius: 5px;">
+    </div>
+    <div style="padding-top: 24px">
+      <p style="padding: 0 4px; margin: 0; font-size: 20px; color: white; opacity: 0.85">
+        {{ film.serialNumber }}
+        <el-divider direction="vertical"/>
+        {{ film.manufacturer.name }}
+        <el-divider direction="vertical"/>
+        {{ film.releaseDateStr }}
+      </p>
+      <el-tag v-if="film.series !== null" class="omg-film-tag" size="medium"> {{film.series.name}} </el-tag>
+      <p style="padding: 24px  4px; margin: 0; font-size: 16px; color: white; opacity: 0.65">
+        {{ film.description }}
+      </p>
+    </div>
+
     <PageTitle title="标签列表"></PageTitle>
 <!--    <h1 class="page-title"> 标签列表 </h1>-->
     <el-row :gutter="24">

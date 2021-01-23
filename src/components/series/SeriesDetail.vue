@@ -5,7 +5,7 @@
 <!--    </el-container>-->
     <PageTitle :title="series.name"></PageTitle>
     <el-row :gutter="32">
-      <el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="6" v-for="film in films" v-bind:key="film.id">
+      <el-col :xs="12" :sm="12" :md="4" :lg="4" :xl="4" v-for="film in films" v-bind:key="film.id">
         <FilmCard :film="film"/>
       </el-col>
     </el-row>
@@ -16,7 +16,7 @@
           hide-on-single-page="true"
           :current-page="pageNum"
           :total="totalElements"
-          page-size="12"
+          :page-size="pageSize"
           @current-change="onPageChange"
           style="margin: 0 auto; padding: 24px 0"/>
     </el-container>
@@ -60,6 +60,7 @@ export default {
     return {
       series: {},
       pageNum: 1,
+      pageSize: 24,
       totalElements: 1,
       films: []
     };

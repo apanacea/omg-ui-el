@@ -23,7 +23,8 @@ import {
   Divider,
   Tag,
   Button,
-  Input
+  Input,
+  Dialog
 
 } from 'element-ui'
 Vue.use(Container)
@@ -43,6 +44,7 @@ Vue.use(Divider)
 Vue.use(Tag)
 Vue.use(Button)
 Vue.use(Input)
+Vue.use(Dialog)
 
 
 Vue.prototype.$urls = urls
