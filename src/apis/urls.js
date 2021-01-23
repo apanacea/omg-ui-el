@@ -16,6 +16,7 @@ export default {
     getPerformerList: baseUrl + '/performers',
     getSeriesList: baseUrl + '/seriesList',
     getTagList: baseUrl + '/tags',
+    getManufacturerList: baseUrl + '/manufacturers',
 
     // 图片列表
     photos: baseUrl + '/photos',

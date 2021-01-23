@@ -107,5 +107,9 @@ export default {
             'name': tagName
         }
         return http.get(urls.getTagList, params)
+    },
+
+    getManufacturerList() {
+        return http.get(urls.getManufacturerList)
     }
 }
