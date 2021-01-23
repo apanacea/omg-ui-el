@@ -37,9 +37,10 @@ export default {
   },
   created() {
     let tagId = this.$route.query.tagId
-    this.$axios.get(this.$urls.selectTag + tagId)
+    this.$apis.getTagDetail(tagId)
         .then((resp) => {
-          this.series = resp.data
+          console.log(resp)
+          this.tag = resp
         })
         .catch((error) => {
           console.log(error)

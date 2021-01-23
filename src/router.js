@@ -17,21 +17,18 @@ import TagDetail from "@/components/tag/TagDetail";
 //定义routes路由的集合，数组类型
 const routes=[
     //单个路由均为对象类型，path代表的是路径，component代表组件
-    {path:'/',redirect:'films'},
+    {path:'/',redirect:'filmList'},
 
-    // {path:'/tag',component:},
-    // {path:'/film/:filmId',component:FilmDetailPage},
-    {path: '/tag', component: TagDetail},
-    {path: '/tags', component: TagList},
+    {path: '/tagList', component: TagList},
+    {path: '/tagDetail', component: TagDetail},
 
-    {path:'/film',component:FilmDetail},
-    // {path:'/film/:filmId',component:FilmDetailPage},
-    {path:'/films',component:FilmList},
+    {path:'/filmList',component:FilmList},
+    {path:'/filmDetail',component:FilmDetail},
 
-    {path:'/performer',component:PerformerDetail},
-    {path:'/performers',component:PerformerList},
+    {path:'/performerList',component:PerformerList},
+    {path:'/performerDetail',component:PerformerDetail},
 
-    {path:'/series',component:SeriesList},
+    {path:'/seriesList',component:SeriesList},
     {path:'/seriesDetail',component:SeriesDetail},
 
 ]

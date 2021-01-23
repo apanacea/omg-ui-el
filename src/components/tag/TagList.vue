@@ -19,6 +19,7 @@
     </el-row>
     <el-container>
       <el-pagination
+          small
           background
           layout="prev, pager, next"
           hide-on-single-page="true"
@@ -68,7 +69,7 @@ export default {
     onWatchRoute() {
       let pageNum = this.$route.query.pageNum
       if (typeof pageNum === 'undefined') {
-        this.$router.push({path: '/tags', query: {pageNum: '1'}})
+        this.$router.push({path: '/tagList', query: {pageNum: '1'}})
       }
     },
     getTagList() {

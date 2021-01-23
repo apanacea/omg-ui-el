@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     jumpToPerformerDetail() {
-      this.$router.push({path:'/performer', query: {performerId: this.performer.id}})
+      this.$router.push({path:'/performerDetail', query: {performerId: this.performer.id}})
     },
   },
   computed: {

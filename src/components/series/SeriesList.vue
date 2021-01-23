@@ -19,6 +19,7 @@
     </el-row>
     <el-container>
       <el-pagination
+          small
           background
           layout="prev, pager, next"
           hide-on-single-page="true"
@@ -62,7 +63,7 @@ export default {
       this.getSeriesList()
     },
     onPageChange(pageNum) {
-      this.$router.push({path: '/series', query: {pageNum: pageNum, seriesName: this.seriesName}})
+      this.$router.push({path: '/seriesList', query: {pageNum: pageNum, seriesName: this.seriesName}})
     },
     getSeriesList() {
       this.$apis.getSeriesList(this.pageNum, this.pageSize, this.seriesName)

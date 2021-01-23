@@ -12,7 +12,22 @@ const ID = '{}'
 export default {
 
     getFilmDetail(filmId) {
-        let url = urls.selectFilmDetail.replace(ID, filmId)
+        let url = urls.getFilmDetail.replace(ID, filmId)
+        return http.get(url)
+    },
+
+    getTagDetail(tagId) {
+        let url = urls.getTagDetail.replace(ID, tagId)
+        return http.get(url)
+    },
+
+    getSeriesDetail(seriesId) {
+        let url = urls.getSeriesDetail.replace(ID, seriesId)
+        return http.get(url)
+    },
+
+    getPerformerDetail(performerId) {
+        let url = urls.getPerformerDetail.replace(ID, performerId)
         return http.get(url)
     },
 

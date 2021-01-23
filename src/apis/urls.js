@@ -1,9 +1,13 @@
-// const baseUrl = 'http://localhost:8080'
-const baseUrl = 'http://62.234.10.88/api'
+const baseUrl = 'http://localhost:8080'
+// const baseUrl = 'http://62.234.10.88/api'
 
 export default {
 
     getFilmDetail: baseUrl + '/film/{}',
+    getTagDetail: baseUrl + '/tag/{}',
+    getSeriesDetail: baseUrl + '/series/{}',
+    getPerformerDetail: baseUrl + '/performer/{}',
+
     getFilmList: baseUrl + '/films',
     getFilmListByPerformerId: baseUrl + '/performer/{}/films',
     getFilmListBySeriesId: baseUrl + '/series/{}/films',

@@ -5,23 +5,24 @@
         <span style="font-style: italic; font-weight: bold; font-size: 30px; margin: 20px auto 10px auto; color: #FE4365">OH MY GIRL</span>
       </el-container>
       <el-container>
+
         <el-menu
             :default-active="selectedIndex"
             style="border-style: none; margin: auto"
             class="el-menu-demo"
             mode="horizontal"
             @select="handleSelect">
-          <el-menu-item index="/films">
-            <span :style="selectedIndex === '/films' ? 'font-size: large' : ''">影片</span>
+          <el-menu-item index="/filmList">
+            <span class="omg-menu-item">影片</span>
           </el-menu-item>
-          <el-menu-item index="/series">
-            <span :style="selectedIndex === '/series' ? 'font-size: large' : ''">系列</span>
+          <el-menu-item index="/seriesList">
+            <span class="omg-menu-item">系列</span>
           </el-menu-item>
-          <el-menu-item index="/tags">
-            <span :style="selectedIndex === '/tags' ? 'font-size: large' : ''">标签</span>
+          <el-menu-item index="/tagList">
+            <span class="omg-menu-item">标签</span>
           </el-menu-item>
-          <el-menu-item index="/performers">
-            <span :style="selectedIndex === '/performers' ? 'font-size: large' : ''">演员</span>
+          <el-menu-item index="/performerList">
+            <span class="omg-menu-item">演员</span>
           </el-menu-item>
         </el-menu>
       </el-container>
@@ -77,6 +78,8 @@ export default {
 }
 
 .omg-menu-item {
-  font-size: x-large;
+  color: #666666;
+  margin: 0 12px;
+  font-size: 16px;
 }
 </style>

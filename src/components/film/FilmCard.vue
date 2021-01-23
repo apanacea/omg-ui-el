@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     jumpToFilmDetail() {
-      this.$router.push({path:'/film', query: {filmId: this.film.id}})
+      this.$router.push({path:'/filmDetail', query: {filmId: this.film.id}})
     }
   }
 };

@@ -19,6 +19,7 @@
     </el-row>
     <el-container>
       <el-pagination
+          small
           background
           layout="prev, pager, next"
           hide-on-single-page="true"
@@ -62,7 +63,7 @@ export default {
       this.getPerformerList()
     },
     onPageChange(pageNum) {
-      this.$router.push({path: '/performers', query: {pageNum: pageNum, performerName: this.performerName}})
+      this.$router.push({path: '/performerList', query: {pageNum: pageNum, performerName: this.performerName}})
     },
     getPerformerList() {
       this.$apis.getPerformerList(this.pageNum, this.pageSize, this.performerName)

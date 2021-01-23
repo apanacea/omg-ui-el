@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     jumpToTagDetail() {
-      this.$router.push({path:'/tag', query: {tagId: this.tag.id}})
+      this.$router.push({path:'/tagDetail', query: {tagId: this.tag.id}})
     },
   },
   computed: {

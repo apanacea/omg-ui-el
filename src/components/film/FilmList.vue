@@ -11,6 +11,7 @@
           @change="onSearch">
       </el-input>
     </el-container>
+    <FilmSelector></FilmSelector>
     <el-row :gutter="24">
       <el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="6" v-for="film in films" v-bind:key="film.id">
         <FilmCard :film="film"/>
@@ -18,6 +19,7 @@
     </el-row>
     <el-container>
       <el-pagination
+          small
           background
           layout="prev, pager, next"
           hide-on-single-page="true"
@@ -32,10 +34,12 @@
 </template>
 <script>
 import FilmCard from "@/components/film/FilmCard";
+import FilmSelector from "@/components/film/FilmSelector";
 
 export default {
   name: 'FilmList',
   components: {
+    FilmSelector,
     FilmCard
   },
   data() {
@@ -44,7 +48,8 @@ export default {
       pageNum: 1,
       pageSize: 12,
       totalElements: 0,
-      serialNumber: ''
+      serialNumber: '',
+      show: false
     }
   },
   created() {
@@ -62,7 +67,7 @@ export default {
       this.getFilmList()
     },
     onPageChange(pageNum) {
-      this.$router.push({path: '/films', query: {pageNum: pageNum, serialNumber: this.serialNumber}})
+      this.$router.push({path: '/filmList', query: {pageNum: pageNum, serialNumber: this.serialNumber}})
     },
     getFilmList() {
       this.$apis.getFilmList(this.pageNum, this.pageSize, this.serialNumber)
