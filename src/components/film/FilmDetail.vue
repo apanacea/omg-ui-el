@@ -95,15 +95,10 @@ export default {
 }
 
 .omg-magnet-link {
+  border: none;
   margin: 0 24px 0 0;
-  background-color: #2980b9;
-  opacity: 0.6;
+  background-color: #141414;
+  opacity: 0.65;
   color: white;
-}
-
-.omg-magnet-link:hover {
-  background-color: #2980b9;
-  color: white;
-  opacity: 0.4;
 }
 </style>

@@ -47,6 +47,11 @@ export default {
       this.onPageChange()
     },
     onPageChange() {
+      if (this.pageNum < 1) {
+        this.pageNum = 1
+      } else if (this.pageNum > this.totalPage) {
+        this.pageNum = this.totalPage
+      }
       return this.$emit('on-page-change', this.pageNum)
     },
     parseInt(s) {
