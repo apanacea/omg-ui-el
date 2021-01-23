@@ -56,12 +56,14 @@ export default {
 }
 
 .omg-search-box-input {
+  padding-left: 5px;
   width: 120px;
   height: 26px;
   border: none;
   outline: none;
   font-size: 14px;
-  border-radius: 3px;
+  border-radius: 5px;
+  color: #666666;
   background-color: white;
   opacity: 0.85;
 }
