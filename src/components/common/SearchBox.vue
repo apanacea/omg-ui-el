@@ -9,8 +9,10 @@
           @change="onSearch"
           @blur="show = inputValue!==''">
     </label>
-    <i class="el-icon-search" style="color: white; opacity: 0.65; margin-left: 10px; font-size: 26px; font-weight: bold"
+    <i class="el-icon-search" style="color: white; opacity: 0.65; margin-left: 15px; font-size: 26px; font-weight: bold"
        @click="onClick"></i>
+    <i class="el-icon-collection-tag" style="color: white; opacity: 0.65; margin-left: 15px; font-size: 26px; font-weight: bold"
+       @click="onSelectorShow"></i>
   </div>
 </template>
 
@@ -37,6 +39,10 @@ export default {
     },
     onSearch() {
       return this.$emit('onSearch', this.inputValue)
+    },
+    onSelectorShow() {
+      console.log('sub')
+      return this.$emit('onSelectorShow')
     }
   }
 }

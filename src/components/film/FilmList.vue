@@ -1,9 +1,10 @@
 <template>
   <div>
     <PageTitle title="影片">
-      <SearchBox @onSearch="onSearch($event, inputValue)">
+      <SearchBox @onSearch="onSearch($event, inputValue)"  @onSelectorShow="onSelectorShow($event)">
       </SearchBox>
     </PageTitle>
+    <FilmSelector :show="show"></FilmSelector>
     <el-row :gutter="24">
       <el-col :xs="12" :sm="12" :md="4" :lg="4" :xl="4" v-for="film in films" v-bind:key="film.id">
         <FilmCard :film="film"/>
@@ -27,10 +28,12 @@
 import FilmCard from "@/components/film/FilmCard";
 import PageTitle from "@/components/common/PageTitle";
 import SearchBox from "@/components/common/SearchBox";
+import FilmSelector from "@/components/film/FilmSelector";
 
 export default {
   name: 'FilmList',
   components: {
+    FilmSelector,
     SearchBox,
     PageTitle,
     FilmCard
@@ -54,6 +57,11 @@ export default {
       this.pageNum = (typeof pageNum) === 'undefined' ? 1 : pageNum
       this.serialNumber = this.$route.query.serialNumber
       this.getFilmList()
+    },
+    onSelectorShow() {
+      console.log('onSelectorShow')
+      this.show = !this.show
+      console.log(this.show)
     },
     onSearch(inputValue) {
       this.serialNumber = inputValue

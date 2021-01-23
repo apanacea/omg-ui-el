@@ -9,11 +9,11 @@
           :src="film.halfCoverUrl"
           fit="fit">
       </el-image>
-          <div style="padding: 0;">
-            <p class="omg-film-card-title">
-              {{ film.serialNumber }}
-            </p>
-          </div>
+      <div style="padding: 5px 0;">
+        <p class="omg-film-card-title">
+          {{ film.serialNumber }}
+        </p>
+      </div>
     </el-card>
   </div>
 

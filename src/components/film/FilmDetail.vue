@@ -90,7 +90,8 @@ export default {
 
 .omg-film-tag {
   color: #666666;
-  margin: 10px;
+  margin-top: 24px;
+  margin-left: 5px;
 }
 
 .omg-magnet-link {
