@@ -1,14 +1,11 @@
 <template>
   <el-container style="max-width: 1500px; margin: 0 auto;">
-    <el-header style="padding: 0; margin-bottom: 50px">
-      <el-container>
-        <span style="font-style: italic; font-weight: bold; font-size: 30px; margin: 20px auto 10px auto; color: #FE4365">OH MY GIRL</span>
-      </el-container>
-      <el-container>
-
+    <el-header style="padding: 0; margin-bottom: 24px">
+      <el-container style="margin-top: 20px">
+        <img src="../public/omg.png" alt="" style="margin: auto 20px; width: 50px; height: 50px">
         <el-menu
             :default-active="selectedIndex"
-            style="border-style: none; margin: auto"
+            style="border-style: none; margin: auto 0"
             class="el-menu-demo"
             mode="horizontal"
             @select="handleSelect">

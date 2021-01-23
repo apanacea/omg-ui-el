@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-container style="padding: 50px 0">
+    <el-container style="padding: 24px 0">
       <span style="margin: auto 0; font-size: 28px">系列</span>
       <el-input
           size="small"
