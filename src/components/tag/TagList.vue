@@ -1,12 +1,7 @@
 <template>
   <div>
     <PageTitle title="标签">
-      <div class="omg-search-box" slot="default">
-        <i class="el-icon-search" style="color: #666666; margin: 0 2px"></i>
-        <label>
-          <input class="omg-search-box-input" type="text" v-model="tagName" @change="onSearch">
-        </label>
-      </div>
+      <SearchBox @onSearch="onSearch($event, inputValue)"/>
     </PageTitle>
 
     <el-row :gutter="24">
@@ -31,12 +26,14 @@
 <script>
 import TagCard from "@/components/tag/TagCard";
 import PageTitle from "@/components/common/PageTitle";
+import SearchBox from "@/components/common/SearchBox";
 
 export default {
   name: 'TagList',
   components: {
     TagCard,
-    PageTitle
+    PageTitle,
+    SearchBox
   },
   data() {
     return {
@@ -57,7 +54,8 @@ export default {
       this.tagName = this.$route.query.tagName
       this.getTagList()
     },
-    onSearch() {
+    onSearch(inputValue) {
+      this.tagName = inputValue
       this.pageNum = 1
       this.getTagList()
     },

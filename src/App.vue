@@ -107,26 +107,7 @@ export default {
   padding: 0 24px;
 }
 
-.omg-search-box {
-  display: flex;
-  align-items: center;
-  width: 150px;
-  height: 30px;
-  border: none;
-  outline: none;
-  background-color: white;
-  border-radius: 8px;
-  padding: 0 5px;
-}
-.omg-search-box-input {
-  width: 120px;
-  height: 26px;
-  border: none;
-  outline: none;
-  font-size: 14px;
-  color: #666666;
-  background-color: white;
-}
+
 
 .span {
   font-size: 16px;

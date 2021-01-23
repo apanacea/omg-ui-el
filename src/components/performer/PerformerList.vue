@@ -1,12 +1,7 @@
 <template>
   <div>
     <PageTitle title="演员">
-      <div class="omg-search-box" slot="default">
-        <i class="el-icon-search" style="color: #666666; margin: 0 2px"></i>
-        <label>
-          <input class="omg-search-box-input" type="text" v-model="performerName" @change="onSearch">
-        </label>
-      </div>
+      <SearchBox @onSearch="onSearch($event, inputValue)"/>
     </PageTitle>
 
     <el-row :gutter="32">
@@ -31,12 +26,14 @@
 <script>
 import PerformerCard from './PerformerCard.vue';
 import PageTitle from "@/components/common/PageTitle";
+import SearchBox from "@/components/common/SearchBox";
 
 export default {
   name: 'PerformerList',
   components: {
     PerformerCard,
-    PageTitle
+    PageTitle,
+    SearchBox
   },
   created() {
     this.init()
@@ -57,7 +54,8 @@ export default {
       this.performerName = this.$route.query.performerName
       this.getPerformerList()
     },
-    onSearch() {
+    onSearch(inputValue) {
+      this.performerName = inputValue
       this.pageNum = 1
       this.getPerformerList()
     },

@@ -1,12 +1,7 @@
 <template>
   <div>
     <PageTitle title="系列">
-      <div class="omg-search-box" slot="default">
-        <i class="el-icon-search" style="color: #666666; margin: 0 2px"></i>
-        <label>
-          <input class="omg-search-box-input" type="text" v-model="seriesName" @change="onSearch">
-        </label>
-      </div>
+      <SearchBox @onSearch="onSearch($event, inputValue)"/>
     </PageTitle>
 
     <el-row :gutter="24">
@@ -31,12 +26,14 @@
 <script>
 import SeriesCard from "@/components/series/SeriesCard";
 import PageTitle from "@/components/common/PageTitle";
+import SearchBox from "@/components/common/SearchBox";
 
 export default {
   name: 'SeriesList',
   components: {
     SeriesCard,
-    PageTitle
+    PageTitle,
+    SearchBox
   },
   data() {
     return {
@@ -57,7 +54,8 @@ export default {
       this.seriesName = this.$route.query.seriesName
       this.getSeriesList()
     },
-    onSearch() {
+    onSearch(inputValue) {
+      this.seriesName = inputValue
       this.pageNum = 1
       this.getSeriesList()
     },

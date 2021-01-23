@@ -1,12 +1,8 @@
 <template>
   <div>
     <PageTitle title="影片">
-      <div class="omg-search-box" slot="default">
-        <i class="el-icon-search" style="color: #666666; margin: 0 2px"></i>
-        <label>
-          <input class="omg-search-box-input" type="text" v-model="serialNumber" @change="onSearch">
-        </label>
-      </div>
+      <SearchBox @onSearch="onSearch($event, inputValue)">
+      </SearchBox>
     </PageTitle>
     <el-row :gutter="24">
       <el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="6" v-for="film in films" v-bind:key="film.id">
@@ -30,10 +26,12 @@
 <script>
 import FilmCard from "@/components/film/FilmCard";
 import PageTitle from "@/components/common/PageTitle";
+import SearchBox from "@/components/common/SearchBox";
 
 export default {
   name: 'FilmList',
   components: {
+    SearchBox,
     PageTitle,
     FilmCard
   },
@@ -57,7 +55,8 @@ export default {
       this.serialNumber = this.$route.query.serialNumber
       this.getFilmList()
     },
-    onSearch() {
+    onSearch(inputValue) {
+      this.serialNumber = inputValue
       this.pageNum = 1
       this.getFilmList()
     },
