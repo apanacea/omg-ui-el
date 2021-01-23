@@ -9,7 +9,7 @@
             fit="fit"/>
       </el-col>
       <el-col :span="14">
-        <p class="film-detail-title"> {{ film.title }} </p>
+<!--        <p class="film-detail-title"> {{ film.title }} </p>-->
         <p style="padding: 0 4px; margin: 0; font-size: 18px; color: #666666">
           {{ film.serialNumber }}
           <el-divider direction="vertical"/>
