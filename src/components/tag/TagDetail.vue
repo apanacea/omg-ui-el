@@ -45,7 +45,7 @@ export default {
         .catch((error) => {
           console.log(error)
         })
-    this.$axios.get(this.$urls.selectTag + tagId +'/films?pageNum=' + this.pageNum + '&pageSize=12&sortBy=releaseDate&sortType=desc')
+    this.$axios.get(this.$urls.selectTag + tagId +'/films?pageNum=' + this.pageNum + '&pageSize=24&sortBy=releaseDate&sortType=desc')
         .then((resp) => {
           this.totalElements=resp.data.totalElements
           this.films = resp.data.list
@@ -65,7 +65,7 @@ export default {
   },
   methods: {
     onPageChange(pageNum) {
-      this.$axios.get(this.$urls.selectTag + this.tag.id +'/films?pageNum=' + pageNum + '&pageSize=12&sortBy=releaseDate&sortType=desc')
+      this.$axios.get(this.$urls.selectTag + this.tag.id +'/films?pageNum=' + pageNum + '&pageSize=24&sortBy=releaseDate&sortType=desc')
           .then((resp) => {
             this.totalElements=resp.data.totalElements
             this.films = resp.data.list

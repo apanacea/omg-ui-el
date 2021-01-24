@@ -43,7 +43,7 @@ export default {
           console.log(error)
         })
     // 获取演员关联的电影列表
-    this.$axios.get(this.$urls.selectPerformer + performerId + '/films?pageNum=' + this.pageNum + '&pageSize=12&sortBy=releaseDate&sortType=desc')
+    this.$axios.get(this.$urls.selectPerformer + performerId + '/films?pageNum=' + this.pageNum + '&pageSize=24&sortBy=releaseDate&sortType=desc')
         .then((resp) => {
           console.log(resp.data);
           this.totalElements = resp.data.totalElements
@@ -64,7 +64,7 @@ export default {
   },
   methods: {
     onPageChange(pageNum) {
-      this.$axios.get(this.$urls.selectPerformer + this.performer.id + '/films?pageNum=' + pageNum + '&pageSize=12&sortBy=releaseDate&sortType=desc')
+      this.$axios.get(this.$urls.selectPerformer + this.performer.id + '/films?pageNum=' + pageNum + '&pageSize=24&sortBy=releaseDate&sortType=desc')
           .then((resp) => {
             this.totalElements = resp.data.totalElements
             this.films = resp.data.list
