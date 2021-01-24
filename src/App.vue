@@ -64,7 +64,7 @@ export default {
   background-color: black;
   border: none;
   outline: none;
-  margin: 0 8px;
+  margin: 0 5px;
   font-size: 16px;
 }
 

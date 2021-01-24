@@ -6,7 +6,7 @@
     </PageTitle>
     <FilmSelector :show="show"></FilmSelector>
     <el-row :gutter="24">
-      <el-col :xs="8" :sm="6" :md="4" :lg="4" :xl="4" v-for="film in films" v-bind:key="film.id">
+      <el-col :xs="12" :sm="6" :md="4" :lg="4" :xl="4" v-for="film in films" v-bind:key="film.id">
         <FilmCard :film="film"/>
       </el-col>
     </el-row>

@@ -1,5 +1,5 @@
 <template>
-  <div style="display: flex; justify-content: center; align-items: center">
+  <div style="display: flex; justify-content: center; align-items: center; padding-bottom: 32px">
     <i class="el-icon-d-arrow-left paging-button" @click="firstPage"></i>
     <i class="el-icon-arrow-left paging-button" @click="prePage"></i>
     <label>

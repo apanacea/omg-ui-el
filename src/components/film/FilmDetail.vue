@@ -2,7 +2,7 @@
   <div>
     <PageTitle :title="film.title"></PageTitle>
     <div style="display: flex; justify-content: center; padding: 24px 0">
-      <img :src="film.coverUrl" :alt="film.title" style="max-width: 800px; border-radius: 5px;">
+      <img :src="film.coverUrl" :alt="film.title" style="width: 100%; max-width: 800px; border-radius: 5px;">
     </div>
     <div style="padding-top: 24px">
       <p style="padding: 0 4px; margin: 0; font-size: 20px; color: white; opacity: 0.85">
